@@ -26,10 +26,13 @@
                     function init (){
                         var CSSproperties = {};
                         var CSScustomProperties = {};
+                        
+                        // reset style
+                        element.attr('style','');
 
                         // process: scope.teoStyle
                         // push properties to CSSproperties or to CSScustomProperties
-                        if (!_.isEmpty(scope.teoStyle)) {
+                        if ( scope.teoStyle ) {
                             _.forIn(scope.teoStyle, function(value, key) {
                                 if (_.startsWith(key, '--')) {
                                     CSScustomProperties[key] = value;
@@ -40,45 +43,43 @@
                         }
 
                         // process: scope.teoStyleCustomPropertiesFallback
-                        if (!_.isEmpty(scope.teoStyleCustomPropertiesFallback && !supportCSSCustomProperties())) {
+                        if ( scope.teoStyleCustomPropertiesFallback && !supportCSSCustomProperties() ) {
                             _.merge(CSSproperties, scope.teoStyleCustomPropertiesFallback);
                         }
 
                         // process: scope.teoStyleCustomProperties
                         // merge into CSScustomProperties 
-                        if (!_.isEmpty(scope.teoStyleCustomProperties)) {
+                        if ( scope.teoStyleCustomProperties && supportCSSCustomProperties() ) {
                             _.merge(CSScustomProperties, scope.teoStyleCustomProperties);
                         }
                         
                         // DOM add inline css custom properties
-                        if (supportCSSCustomProperties()) {
+                        if ( supportCSSCustomProperties() ) {
                             cssCustomProperties(element[0], CSScustomProperties);
                         }
                         
                         // DOM add inline style
                         element.css(CSSproperties);
                     }
-                    
-                    init();
 
                     // listen for changes
-                    scope.$watch('teoStyle', function(newValue, oldValue) {
-                        if (newValue) {
+                    scope.$watch('teoStyle', function(newStyles, oldStyles) {
+                        if (newStyles) {
                             init();
                         }    
-                    });
+                    },true);
                     
-                    scope.$watch('teoStyleCustomPropertiesFallback', function(newValue, oldValue) {
-                        if (newValue) {
+                    scope.$watch('teoStyleCustomPropertiesFallback', function(newStyles, oldStyles) {
+                        if (newStyles) {
                             init();
                         }    
-                    });
+                    },true);
                     
-                    scope.$watch('teoStyleCustomProperties', function(newValue, oldValue) {
-                        if (newValue) {
+                    scope.$watch('teoStyleCustomProperties', function(newStyles, oldStyles) {
+                        if (newStyles) {
                             init();
-                        }    
-                    });
+                        }
+                    }, true);
                     
                 }
             };

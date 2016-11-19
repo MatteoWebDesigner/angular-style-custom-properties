@@ -4,25 +4,32 @@ angular
 ])
 .component('appComponent', {
     templateUrl: 'template.html',
-    controller: class appComponent {
-        constructor () {
-            this.init();
-        }
-        
-        init () {
+    controller: function ($scope) {
+        this.init = function () {
             this.ratio = '50%';
 
             this.styleFallback = {
                 width: this.ratio
-            }
+            };
 
             this.style = {
                 '--ciao': this.ratio,
                 color: 'red'
-            }
-        }
+            };
+            
+            this.styleCustomProperties = {
+                '--new': '5px'
+            };
+        };
+        
+        this.reset = function () {
+            this.ratio = undefined;
+            this.styleFallback = {};
+            this.styleCustomProperties = {};
+            this.style = {};
+        };
 
-        updateStyle () { // update reference
+        this.updateStyle = function () { // update reference
             this.ratio = '100%';
 
             this.styleFallback['width'] = this.ratio;
@@ -32,9 +39,9 @@ angular
             this.style['--ciao'] = this.ratio;
             this.style['color'] = 'blue';
             this.style['border'] = '1px solid black';
-        }
+        };
 
-        replaceStyle () { // replace reference
+        this.replaceStyle = function () { // replace reference
             this.ratio = '80%';
 
             this.styleFallback = {
@@ -48,7 +55,8 @@ angular
                 'color': 'blue',
                 'border': '1px solid black'
             }
-        }
-
+        };
+        
+        this.init();
     }
 });

@@ -1,9 +1,16 @@
 .ciao {
   --ciao: 0;
+  --ciao2: 0;
   
   min-height: 50px;
   width: var(--ciao);
   background: orange;
   
   margin-bottom: 15px;
+  padding: var(--ciao2);
+}
+
+.debug-style {
+    background-color: #css;
+    color: white;
 }

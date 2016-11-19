@@ -2,7 +2,9 @@
     styleF:
     {{ $ctrl.styleFallback | json }}<br/>
     style :
-    {{ $ctrl.style | json }}<br/><br/>
+    {{ $ctrl.style | json }}<br/>
+    styleC: 
+    {{ $ctrl.styleCustomProperties | json}}<br/><br/>
     
     <!-- style from object -->
     <div class="ciao"
@@ -11,7 +13,6 @@
         style from object
     </div>
 
-
     <!-- style from object with fallback -->
     <div 
         class="ciao" 
@@ -19,6 +20,16 @@
         teo-style-custom-properties-fallback="$ctrl.styleFallback" 
     >
         style from object with fallback
+    </div>
+    
+    <!-- style from object with fallback -->
+    <div 
+        class="ciao" 
+        teo-style="$ctrl.style"
+        teo-style-custom-properties="$ctrl.styleCustomProperties"
+        teo-style-custom-properties-fallback="$ctrl.styleFallback" 
+    >
+        style from object with fallback and custom properties
     </div>
     
     
@@ -33,7 +44,10 @@
         }"
         teo-style-custom-properties-fallback="$ctrl.styleFallback" 
     >
-        inline style you can update only the values defined
+        inline style you can update only the values defined and you cannot reset
+    </div>
+    <div class="debug-style">
+        style="<div class="js-debug"></div>"
     </div>
 
     <br/>
@@ -41,4 +55,5 @@
     <button type="button" ng-click="$ctrl.updateStyle()">Update style</button>
     <button type="button" ng-click="$ctrl.replaceStyle()">Replace style</button>
     <button type="button" ng-click="$ctrl.init()">Reset to init state</button>
+    <button type="button" ng-click="$ctrl.reset()">Reset style</button>
 </div>
