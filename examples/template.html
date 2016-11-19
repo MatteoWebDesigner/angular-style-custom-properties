@@ -7,7 +7,7 @@
     {{ $ctrl.styleCustomProperties | json}}<br/><br/>
     
     <!-- style from object -->
-    <div class="ciao"
+    <div class="component"
         teo-style="$ctrl.style"
     >
         style from object
@@ -15,7 +15,7 @@
 
     <!-- style from object with fallback -->
     <div 
-        class="ciao" 
+        class="component" 
         teo-style="$ctrl.style"
         teo-style-custom-properties-fallback="$ctrl.styleFallback" 
     >
@@ -24,7 +24,7 @@
     
     <!-- style from object with fallback -->
     <div 
-        class="ciao" 
+        class="component" 
         teo-style="$ctrl.style"
         teo-style-custom-properties="$ctrl.styleCustomProperties"
         teo-style-custom-properties-fallback="$ctrl.styleFallback" 
@@ -35,19 +35,16 @@
     
     <!-- inline style -->
     <div 
-        class="ciao" 
+        class="component" 
         teo-style="{
             color: 'red'
         }"
         teo-style-custom-properties="{
-            '--ciao': $ctrl.ratio
+            '--size': $ctrl.ratio
         }"
         teo-style-custom-properties-fallback="$ctrl.styleFallback" 
     >
         inline style you can update only the values defined and you cannot reset
-    </div>
-    <div class="debug-style">
-        style="<div class="js-debug"></div>"
     </div>
 
     <br/>
@@ -56,4 +53,6 @@
     <button type="button" ng-click="$ctrl.replaceStyle()">Replace style</button>
     <button type="button" ng-click="$ctrl.init()">Reset to init state</button>
     <button type="button" ng-click="$ctrl.reset()">Reset style</button>
+    
+    <h2>partial actions:</h2>
 </div>

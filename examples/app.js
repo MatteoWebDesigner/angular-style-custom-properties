@@ -13,12 +13,12 @@ angular
             };
 
             this.style = {
-                '--ciao': this.ratio,
+                '--size': this.ratio,
                 color: 'red'
             };
             
             this.styleCustomProperties = {
-                '--new': '5px'
+                '--padding': '15px'
             };
         };
         
@@ -36,7 +36,7 @@ angular
             this.styleFallback['color'] = 'blue';
             this.styleFallback['border'] = '1px solid black';
 
-            this.style['--ciao'] = this.ratio;
+            this.style['--size'] = this.ratio;
             this.style['color'] = 'blue';
             this.style['border'] = '1px solid black';
         };
@@ -51,7 +51,7 @@ angular
             }
 
             this.style = {
-                '--ciao': this.ratio,
+                '--size': this.ratio,
                 'color': 'blue',
                 'border': '1px solid black'
             }
