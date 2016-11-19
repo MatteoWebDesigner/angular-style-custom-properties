@@ -7,6 +7,11 @@ plunker: https://plnkr.co/edit/QHCR92capTrJYJmdjLwU?p=preview
 
 # use
 
+properties you can use:
+- app-style
+- angular-style-custom-properties
+- angular-style-custom-properties-fallback
+
 the most efficient way to use this directive is to use just one property:
 
 ```
@@ -19,7 +24,7 @@ the most efficient way to use this directive is to use just one property:
 
 ```
 
-or combined with the
+or combined with the fallback
 
 ```
 <div 
@@ -34,9 +39,9 @@ or combined with the
 >component</div>
 ```
 
-try to avoid complex scenario
+try to avoid complex scenario where you use all of them
 
 
 # improvements 
 
-Every properties is watch, if multiple are changing this cause to run init() more than once and run the whole style calculation.
+Every properties is watched, if multiple properties are changing this cause to run init() more than once and run the whole style calculation.
