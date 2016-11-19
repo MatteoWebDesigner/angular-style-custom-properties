@@ -57,8 +57,6 @@
                         
                         // DOM add inline style
                         element.css(CSSproperties);
-                        
-                        console.log('init');
                     }
                     
                     init();
@@ -66,21 +64,18 @@
                     // listen for changes
                     scope.$watch('teoStyle', function(newValue, oldValue) {
                         if (newValue) {
-                            console.log("teoStyle");
                             init();
                         }    
                     });
                     
                     scope.$watch('teoStyleCustomPropertiesFallback', function(newValue, oldValue) {
                         if (newValue) {
-                            console.log("teoStyleCustomPropertiesFallback");
                             init();
                         }    
                     });
                     
                     scope.$watch('teoStyleCustomProperties', function(newValue, oldValue) {
                         if (newValue) {
-                            console.log("teoStyleCustomProperties");
                             init();
                         }    
                     });
