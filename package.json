@@ -1,0 +1,25 @@
+{
+    "name": "angular-style-custom-properties",
+    "version": "1.0.0",
+    "description": "",
+    "main": "style-custom-properties.js",
+    "directories": {
+        "example": "examples"
+    },
+    "scripts": {
+        "start": "http-server examples -o"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/MatteoWebDesigner/angular-style-custom-properties.git"
+    },
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://github.com/MatteoWebDesigner/angular-style-custom-properties/issues"
+    },
+    "homepage": "https://github.com/MatteoWebDesigner/angular-style-custom-properties#readme",
+    "devDependencies": {
+        "http-server": "^0.9.0"
+    }
+}

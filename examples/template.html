@@ -1,0 +1,44 @@
+<div>
+    styleF:
+    {{ $ctrl.styleFallback | json }}<br/>
+    style :
+    {{ $ctrl.style | json }}<br/><br/>
+    
+    <!-- style from object -->
+    <div class="ciao"
+        teo-style="$ctrl.style"
+    >
+        style from object
+    </div>
+
+
+    <!-- style from object with fallback -->
+    <div 
+        class="ciao" 
+        teo-style="$ctrl.style"
+        teo-style-custom-properties-fallback="$ctrl.styleFallback" 
+    >
+        style from object with fallback
+    </div>
+    
+    
+    <!-- inline style -->
+    <div 
+        class="ciao" 
+        teo-style="{
+            color: 'red'
+        }"
+        teo-style-custom-properties="{
+            '--ciao': $ctrl.ratio
+        }"
+        teo-style-custom-properties-fallback="$ctrl.styleFallback" 
+    >
+        inline style you can update only the values defined
+    </div>
+
+    <br/>
+
+    <button type="button" ng-click="$ctrl.updateStyle()">Update style</button>
+    <button type="button" ng-click="$ctrl.replaceStyle()">Replace style</button>
+    <button type="button" ng-click="$ctrl.init()">Reset to init state</button>
+</div>

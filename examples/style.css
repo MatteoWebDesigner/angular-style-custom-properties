@@ -1,0 +1,9 @@
+.ciao {
+  --ciao: 0;
+  
+  min-height: 50px;
+  width: var(--ciao);
+  background: orange;
+  
+  margin-bottom: 15px;
+}
