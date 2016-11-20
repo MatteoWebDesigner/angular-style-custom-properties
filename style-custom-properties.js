@@ -11,7 +11,11 @@
 
             function cssCustomProperties(elm, css) {
                 _.forIn(css, function(value, prop) {
-                    elm.style.setProperty(prop, value);
+                    if (value) {
+                        elm.style.setProperty(prop, value);
+                    } else {
+                        elm.style.removeProperty(prop);
+                    }
                 });
             }
 
