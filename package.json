@@ -14,7 +14,7 @@
     "type": "git",
     "url": "git+https://github.com/MatteoWebDesigner/angular-style-custom-properties.git"
   },
-  "author": "matteowebdesigner",
+  "author": "matteowebdesigner <matteowebdesigner@googlemail.com>",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/MatteoWebDesigner/angular-style-custom-properties/issues"
