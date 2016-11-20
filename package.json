@@ -1,25 +1,27 @@
 {
-    "name": "angular-style-custom-properties",
-    "version": "1.0.0",
-    "description": "",
-    "main": "style-custom-properties.js",
-    "directories": {
-        "example": "examples"
-    },
-    "scripts": {
-        "start": "http-server examples -o"
-    },
-    "repository": {
-        "type": "git",
-        "url": "git+https://github.com/MatteoWebDesigner/angular-style-custom-properties.git"
-    },
-    "author": "",
-    "license": "ISC",
-    "bugs": {
-        "url": "https://github.com/MatteoWebDesigner/angular-style-custom-properties/issues"
-    },
-    "homepage": "https://github.com/MatteoWebDesigner/angular-style-custom-properties#readme",
-    "devDependencies": {
-        "http-server": "^0.9.0"
-    }
+  "name": "angular-style-custom-properties",
+  "version": "1.0.0",
+  "description": "allow to generate inline style and apply even css custom properties",
+  "main": "style-custom-properties.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "start": "copyfiles style-custom-properties.js examples; http-server examples -o",
+    "min": "uglifyjs -c -o=style-custom-properties.min.js style-custom-properties.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MatteoWebDesigner/angular-style-custom-properties.git"
+  },
+  "author": "matteowebdesigner",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MatteoWebDesigner/angular-style-custom-properties/issues"
+  },
+  "homepage": "https://github.com/MatteoWebDesigner/angular-style-custom-properties#readme",
+  "devDependencies": {
+    "copyfiles": "^1.0.0",
+    "http-server": "^0.9.0"
+  }
 }

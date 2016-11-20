@@ -3,20 +3,25 @@
     
     var supportCSSCustomProperties = window.CSS && CSS.supports('color', 'var(--is-supported)');
     
+    function forIn (obj, fn) {
+        for (var prop in obj) {
+            fn(obj[prop],prop);
+        }
+    }
+    
+    function cssCustomProperties(elm, css) {
+        forIn(css, function(value, prop) {
+            if (value !== undefined) {
+                elm.style.setProperty(prop, value);
+            } else {
+                elm.style.removeProperty(prop);
+            }
+        });
+    }
+    
     angular
         .module('teoStyleCustomProperties', [])
         .directive('teoStyle', function() {
-
-            function cssCustomProperties(elm, css) {
-                _.forIn(css, function(value, prop) {
-                    if (value) {
-                        elm.style.setProperty(prop, value);
-                    } else {
-                        elm.style.removeProperty(prop);
-                    }
-                });
-            }
-
             return {
                 restrict: 'A',
                 scope: {
@@ -35,8 +40,8 @@
                         // process: scope.teoStyle
                         // push properties to CSSproperties or to CSScustomProperties
                         if ( scope.teoStyle ) {
-                            _.forIn(scope.teoStyle, function(value, key) {
-                                if (_.startsWith(key, '--')) {
+                            forIn(scope.teoStyle, function(value, key) {
+                                if ( key.substring(0,2) == '--' ) {
                                     CSScustomProperties[key] = value;
                                 } else {
                                     CSSproperties[key] = value;
@@ -46,13 +51,13 @@
 
                         // process: scope.teoStyleCustomPropertiesFallback
                         if ( scope.teoStyleCustomPropertiesFallback && !supportCSSCustomProperties ) {
-                            _.merge(CSSproperties, scope.teoStyleCustomPropertiesFallback);
+                            Object.assign(CSSproperties,scope.teoStyleCustomPropertiesFallback)
                         }
 
                         // process: scope.teoStyleCustomProperties
                         // merge into CSScustomProperties 
                         if ( scope.teoStyleCustomProperties && supportCSSCustomProperties ) {
-                            _.merge(CSScustomProperties, scope.teoStyleCustomProperties);
+                            Object.assign(CSScustomProperties,scope.teoStyleCustomProperties)
                         }
                         
                         // DOM add inline css custom properties
