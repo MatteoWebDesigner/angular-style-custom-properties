@@ -1,13 +1,11 @@
 (function(){
     "use strict";
     
+    var supportCSSCustomProperties = window.CSS && CSS.supports('color', 'var(--is-supported)');
+    
     angular
         .module('teoStyleCustomProperties', [])
         .directive('teoStyle', function() {
-
-            function supportCSSCustomProperties() {
-                return window.CSS && CSS.supports('color', 'var(--is-supported)');
-            }
 
             function cssCustomProperties(elm, css) {
                 _.forIn(css, function(value, prop) {
@@ -47,18 +45,18 @@
                         }
 
                         // process: scope.teoStyleCustomPropertiesFallback
-                        if ( scope.teoStyleCustomPropertiesFallback && !supportCSSCustomProperties() ) {
+                        if ( scope.teoStyleCustomPropertiesFallback && !supportCSSCustomProperties ) {
                             _.merge(CSSproperties, scope.teoStyleCustomPropertiesFallback);
                         }
 
                         // process: scope.teoStyleCustomProperties
                         // merge into CSScustomProperties 
-                        if ( scope.teoStyleCustomProperties && supportCSSCustomProperties() ) {
+                        if ( scope.teoStyleCustomProperties && supportCSSCustomProperties ) {
                             _.merge(CSScustomProperties, scope.teoStyleCustomProperties);
                         }
                         
                         // DOM add inline css custom properties
-                        if ( supportCSSCustomProperties() ) {
+                        if ( supportCSSCustomProperties ) {
                             cssCustomProperties(element[0], CSScustomProperties);
                         }
                         
