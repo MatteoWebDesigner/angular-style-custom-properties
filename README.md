@@ -41,6 +41,12 @@ or combined with the fallback
 
 try to avoid complex scenario where you use all of them
 
+# tested
+- Chrome 54
+- Safari 10
+- Firefox 50
+- IE 11 on Win7
+- Edge 14 on Win10
 
 # improvements 
 

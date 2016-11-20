@@ -11,3 +11,15 @@
     margin-bottom: 15px;
     padding: var(--padding);
 }
+
+@supports not (color: var(--is-supported)) {
+    .component {
+        width: 0;
+        padding: 0;
+    }
+}
+
+.ie11 .component {
+    width: 0;
+    padding: 0;
+}

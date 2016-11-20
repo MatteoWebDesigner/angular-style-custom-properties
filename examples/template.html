@@ -27,7 +27,7 @@
         class="component" 
         teo-style="$ctrl.style"
         teo-style-custom-properties="$ctrl.styleCustomProperties"
-        teo-style-custom-properties-fallback="$ctrl.styleFallback" 
+        teo-style-custom-properties-fallback="$ctrl.styleCustomPropertiesFallback" 
     >
         style from object with fallback and custom properties
     </div>
@@ -42,9 +42,11 @@
         teo-style-custom-properties="{
             '--size': $ctrl.ratio
         }"
-        teo-style-custom-properties-fallback="$ctrl.styleFallback" 
+        teo-style-custom-properties-fallback="{
+            width: $ctrl.ratio
+        }" 
     >
-        inline style you can update only the values defined and you cannot reset
+        inline style with fallback you can update only the values defined and you cannot reset
     </div>
 
     <br/>
@@ -53,6 +55,4 @@
     <button type="button" ng-click="$ctrl.replaceStyle()">Replace style</button>
     <button type="button" ng-click="$ctrl.init()">Reset to init state</button>
     <button type="button" ng-click="$ctrl.reset()">Reset style</button>
-    
-    <h2>partial actions:</h2>
 </div>
